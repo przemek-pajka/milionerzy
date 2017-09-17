@@ -1,0 +1,45 @@
+// GRID BASE CONFIG
+$grid-columns: 12; //IloĹ›Ä‡ kolumn grid'a
+$container: 1233px; // SzerokoĹ›Ä‡ kontenera (wrappera)
+
+$desktopXS-grid-columns: 12;
+$tablet-grid-columns: 12;
+$mobile-grid-columns: 12;
+$mobileS-grid-columns: 12;
+
+// PAGE FONTS
+$em-base: 15px; // Domyślna wielkość fontu do przeliczania na rem (działa tylko z frameworkiem Bourbon)
+$baseFont: "Montserrat-Regular";
+$m-regular:  "Montserrat-Regular";
+$m-ebold: "Montserrat-ExtraBold";
+$m-bold: "Montserrat-Bold";
+$m-light: "Montserrat-Light";
+$m-black: "Montserrat-Black";
+
+// PAGE COLORS
+$baseColor: #000; // Kolor bazowy (zazwyczaj czarny lub podobny wykorzystywany globalnie np. dla fontów)
+$secColor: #f13e4b; // czerwony
+$altColor: #313337; // Kolor alternatywny (dla jasno szarych bloków, pod zdjęcia,ikony)*/
+
+// SECTIONS BG
+$body_bg: #fff;
+
+// BUTTON COLORS
+$darkColor: #282828;
+
+//INPUT BG
+$input_bg: #222327;
+
+// FOOTER
+$footer_bg: #222327;
+
+// SIDE MENU
+/*$sideMenuBorder: #ededed;*/
+
+
+//MEDIA QUERIES
+$desktop: "min-width: 769px";
+$desktop-xs: "max-width: 1024px";
+$tablet: "max-width: 768px";
+$phone-xl: "max-width: 425px";
+$phone-xs: "max-width: 375px";
