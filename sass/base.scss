@@ -61,7 +61,11 @@ body {
 }
 
 body {
-    background: #161650;
+    height: 100vh;
+    background: #314755;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to bottom, #26a0da, #314755);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, #26a0da, #314755); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background-repeat: no-repeat;
 }
 button {
     cursor: pointer;
@@ -167,7 +171,7 @@ h3 {
         }
     }
     .game-wrapper__question {
-        background-color: #4169e1;
+        background: #2d0d8c;
         text-align: center;
         font-size: 33px;
         padding: 10px;
