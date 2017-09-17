@@ -33,7 +33,7 @@ img {
 body {
     font-family: $baseFont;
     font-family: 'Lato', sans-serif;
-    font-size: 14px;
+    padding: 50px 0px;
 }
 .disp-block {
     display: block;
@@ -72,7 +72,6 @@ button {
     letter-spacing: 1px;
     font-size: 70px;
     text-align: center;
-    padding-top: 50px;
 }
 h3 {
     color: #fff;
