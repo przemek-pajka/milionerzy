@@ -1,29 +1,11 @@
 (function() {
 
-    // var rand = Math.round(Math.random() * 99) +1;
-    
-    // if(rand <=65) {
-    //     console.log("pierwszy if: liczba jest mniejsza od 65 lub równa, liczba wynosi:" + rand);
-    //     return false;
-    // }
-    //   if(rand <=75) {
-    //     console.log("drugi if: liczba jest mniejsza od 75 lub równa, liczba wynosi:" + rand);
-    //     return false;
-    // }
-    //   if(rand <=85) {
-    //     console.log("trzeci if: liczba jest mniejsza od 85 lub równa, liczba wynosi:" + rand);
-    //     return false;
-    // }
-   
-  
-      
-
 $.getJSON("questions-answers.json",function(result) {
     getData(result);
 });
 
 
-var oldQuestionsSet = localStorage.getItem('oldQuestionsSet'); // load number of questions set
+var oldQuestionsSet = localStorage.getItem('oldQuestionsSet'); // load number of old questions set
 playerNick = localStorage.getItem('playerNick');
 $('#nick-input').val(playerNick);
 var cashArr;
@@ -55,19 +37,13 @@ var currentGameState;
             localStorage.setItem('oldQuestionsSet',this.questions_set);
             return this.questions_set;       
     }
-// resetGameState() after loose or win;
-// startNewRound();
-// endRoundState boolean
-// var roundCounter;
-
-// changes on typed answers
 };
  
 $('.help-btn').click(function() {
     $(this).prop('disabled',true);
     $(this).addClass('help-used');
 });
-$('.fifty-btn').click(function() { ///////////////// PRZENIESC W INNE MIEJSCE
+$('.fifty-btn').click(function() { 
     helpers.fifty();
 });
 $('.question-public-btn').click(function() {
@@ -85,7 +61,6 @@ var helpers = {
      
         for(let i=0;i<=3;i++) {  
             if(currentGameState.typed_answers[i] != questionsArr[currentGameState.questions_set][currentGameState.roundCounter].correct){ 
-                //currentGameState.typed_answers.splice($.inArray(currentGameState.typed_answers[i],currentGameState.typed_answers),1);
                 elementToDelete.push(currentGameState.typed_answers[i]);
             }
         }
@@ -93,8 +68,8 @@ var helpers = {
             elementToDelete.splice(randNumb,1);
          
         
-            for(var k=0;k<=3;k++) {
-                for(var i=0;i<=1;i++) {
+            for(let k=0;k<=3;k++) {
+                for(let i=0;i<=1;i++) {
                     if(elementToDelete[i] === currentGameState.typed_answers[k])
                         currentGameState.typed_answers.splice(k,1);
                 }
@@ -107,9 +82,6 @@ var helpers = {
                     }
                 }
             }
-    
-     
-        // zmienna ktora okresla ktora odpowiedz z przedzialu petli ma być usunięta
     },
     question_public: function() {
         var percentage = document.createElement('div');
@@ -120,7 +92,7 @@ var helpers = {
             var perc_bar = [];
             var perc_text = []
 
-            for(var i=0; i<thecount;i++) {
+            for(let i=0; i<thecount;i++) {
                 perc_block[i] = document.createElement('div');
                 perc_bar[i] = document.createElement('div');
                 perc_text[i] = document.createElement('div');
@@ -129,18 +101,17 @@ var helpers = {
                 $(perc_bar[i]).addClass('game-wrapper__percentage-bar');
                 $(perc_text[i]).addClass('game-wrapper__percentage-text');
 
-                // block(bar,text)
                 $(perc_block[i]).append(perc_bar[i]);
                 $(perc_block[i]).append(perc_text[i]);
-                $(percentage).append(perc_block[i]); //
+                $(percentage).append(perc_block[i]); 
             }
             var r = [];
             var currsum = 0;
-            for(var i=0; i<thecount; i++) {
+            for(let i=0; i<thecount; i++) {
                 r.push(Math.random());
                 currsum += r[i];
             }
-            for(var i=0; i<r.length; i++) {
+            for(let i=0; i<r.length; i++) {
                 r[i] = Math.round(r[i] / currsum * max);
             }
             return r;
@@ -162,36 +133,29 @@ var helpers = {
         };
         
         // Array Sorted while chance is 70% and under
-        for(var i=0;i<currentGameState.typed_answers.length;i++) {
+        for(let i=0;i<currentGameState.typed_answers.length;i++) {
             if(currentGameState.typed_answers[i] == questionsArr[currentGameState.questions_set][currentGameState.roundCounter].correct && chance < 70)
                 correct_pos = i;
         }
         move(arr,place_largest,correct_pos);
   
-        console.log(percentage_bar.length);
-        for(var i=0;i<percentage_bar.length;i++) {
-           // $(percentage_bar[i]).css("height",arr[i]+"%");
+
+        for(let i=0;i<percentage_bar.length;i++) {
             $(percentage_bar[i]).animate({height:arr[i]+"%"},700);
             $(percentage_bar[i]).text(arr[i]);
-            // console.log('.game-wrapper__percentage-text');
-             $(percentage_text[i]).text(currentGameState.typed_answers[i]);
+            $(percentage_text[i]).text(currentGameState.typed_answers[i]);
              
         }
-        // if chance <= 70 so give the correct answer the highest percentage numb 
-        // maybe gives the highest number on position in which i find the correct answer 
     },
     phone_friend: function() {
         var chance = Math.round(Math.random() *99 +1);
         var phoneFriendWrapper = $('.game-wrapper__phone-friend');
 
 
-        console.log(chance);
      
         function generateRandomNumb() {
             var rand = Math.round(Math.random() *(currentGameState.typed_answers.length-1)); 
-            console.log(rand);
-            console.log(currentGameState.typed_answers[rand]);
-            console.log(questionsArr[currentGameState.questions_set][currentGameState.roundCounter].correct);
+    
             if(currentGameState.typed_answers[rand] == questionsArr[currentGameState.questions_set][currentGameState.roundCounter].correct) { // If the rand == correct answer numb so repeat a function
                 rand = generateRandomNumb();
             }
@@ -199,13 +163,12 @@ var helpers = {
             return rand;
             
         }
-        console.log(currentGameState.typed_answers);
+
         if (chance <= 70) {
             $(phoneFriendWrapper).append("Myślę, że poprawna odpowiedź to " + questionsArr[currentGameState.questions_set][currentGameState.roundCounter].correct);
         }
         if (chance > 70) {
             var abg = generateRandomNumb();
-            console.log(abg);
             $(phoneFriendWrapper).append("Myślę, że poprawna odpowiedź to " + currentGameState.typed_answers[abg]);
         }
     }
@@ -250,7 +213,7 @@ function startGame() {
     // startGame -- => initialization first round 
 }
 
-function newRound() { // if roundCounter <=12 && endRoundState is true newRound();
+function newRound() { 
     $('.game-wrapper__answers__item').removeClass('clicked correct incorrect');
     $('.help-btn').prop('disabled',false);
     $('.help-used').prop('disabled',true);
@@ -263,11 +226,9 @@ function newRound() { // if roundCounter <=12 && endRoundState is true newRound(
     loadQuestionAnswers();
     takeAnswer();
 
-    // currentGameState.roundCounter +=1 ;
 }
 
 function loadQuestionAnswers() {
-    console.log(questionsArr[currentGameState.questions_set][currentGameState.roundCounter].correct);
     var gameAnswersContainers = $('.game-wrapper__answers__item');
 
     $('.game-wrapper__question').text(questionsArr[currentGameState.questions_set][currentGameState.roundCounter].question);
@@ -276,13 +237,10 @@ function loadQuestionAnswers() {
     
 
 
-    for(var k=0;k<gameAnswersContainers.length;k++) {
+    for(let k=0;k<gameAnswersContainers.length;k++) {
         $(gameAnswersContainers[k]).text(questionsArr[currentGameState.questions_set][currentGameState.roundCounter].answer[k]);
     }
     currentGameState.typed_answers = questionsArr[currentGameState.questions_set][currentGameState.roundCounter].answer;
-    //console.log(currentGameState.typed_answers);
-   
-
 }
 function takeAnswer() {
     $('.game-wrapper__answers__item').click(function() {
@@ -303,13 +261,11 @@ function takeAnswer() {
 function validateRightAnswer(answer,cl) {
     var successSound = new Audio('sounds/correctAnswer.wav');
     if(answer.includes(questionsArr[currentGameState.questions_set][currentGameState.roundCounter].correct))  {
-        console.log("correct");
         successSound.play();
         cl.addClass('correct');
         return true;
     }
     else {
-        console.log("incorrect");
         cl.addClass('incorrect');
         return false;
     }
@@ -343,79 +299,6 @@ function showResult(arg) {
         $('.game-wrapper__info').append(replayBtn);
     }
 }
-
-/*  
-    If end game by win or loose show finish screen with game result and replay button
-    If player fill name field, and press ENTER start new game
-    If start new round, load question and answers to choose
-    If player choose right answer, do the animation, show money and do the next round and show next question and answers      
-    If game is ended by win or loose show Start button and final money
-    If helper is used remove the possibility of reuse
-    If one helper is used, let this affect the answers in other helpers
-    If one questions set is used before, use another set in next game
-
-
-    $$$ HELPERS $$$
-        1. Fifty-fifty - gives a 2 of 4 answers(one correct and one incorrect) // correct answer, and second answer which is not correct
-                If phone to friend or question to public, include answer from helper.
-                If question to public show answers,  50 % chance to show the second mostly common chosen answer them in fifty-fifity.
-                If phone to friend is show answer who has not right, 75 % to show this answer in fifty fifty
-
-                using: remove 2 wrong answer
-        2. Phone to friend // 75%
-            If fifty fifty is used 80% chance to show correct answer
-            If question to public is used 80% chance to show correct answer
-
-            using: 
-        3. Question to public
-            If fifty fifty is used, draw between the two remaining answers
-            using: 
-
-        variable who has % chance to correct answer
-        if next helper is used add 10 % ability to show right answer in using the next helper
-        * Helper 65% chance to show correct answer
-       ** Helper 75% chance to show correct answer
-      *** Helper 85% chance to show correct answer
-   
-
-      if(generate rand <=65) {
-          show correct answer
-      }
-       else if(generate rand <=75) {
-          show correct answer
-      }
-       else if(generate rand <=85) {
-          show correct answer
-      }
-
-      TO DO ::: 
-        - HELPERS
-        - remove possibility of reuse helpers
-        - BUGFIX REPLAY GAME MUST RETURN ANOTHER QUESTIONS SET IN NEW GAME
-        - BUGFIX REFRESH GAME WHILE FAST REFRESH, RETURN THE (Uncaught TypeError: Cannot read property 'length' of undefined) IN CONSOLE
-        - IF NEW GAME RETURN THE POSSIBILITY OF USE A HELPERS
-        - FINISH GAME WINDOW
-        - BETTER GRAPHIC DESIGN
-        - ANIMATION AND TIME CONFIGURE
-        - MORE QUESTIONS SET IN JSON
-        - SOUNDS TO GAME (TO HELPERS,BACKGROUND SOUND, AND CHECK A ANSWER)
-        - COMMANDS INFO FROM AUTOMAT GAME
-
-
-
-        fifty fifty 
-        - usun 2 losowe niepoprawne z 4 odpowiedzi, z ktorych zadna nie jest correct
-
-        -question public 
-        - losowanie 4 liczb(szansa że poprawna odpowiedz bedzie miala najwiecej głosów publicznosci wynosi 65 %)
-        - 4 wylosowane liczby procentowe razem wynoszą 100%
-        - 65% szansy na to, aby najwieksza wylosowana liczba była odpowiedzią poprawną
-
-        if(repeat) its true then {
-            
-            repeat = false;
-        }
-*/ 
 })();
 
 
