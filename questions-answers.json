@@ -94,7 +94,7 @@
                 {"id":7,"question":"Czyją rolę grał Roberta Gonera w filmie \"Jan Paweł II\"?","answer":["Tadeusza","członka PZPR","Wojciecha","profesora Kierka"],"correct":"Tadeusza"},
                 {"id":8,"question":"Mamba to rodzaj:","answer":["żaby","żółwia","krokodyla","węża"],"correct":"węża"},
                 {"id":9,"question":"W jakim województwie leży miejscowość Biłgoraj, z której pochodzi m.in. Janusz Palikot?","answer":["w świętokrzyskim","w podkarpackim","w mazowieckim","w lubelskim"],"correct":"w lubelskim"},
-                {"id":10,"question":"Dowódcą wojsk polskich w bitwie pod Racławicami był:","answer":["Kazimierz Pułaski","Tadeusz Kościuszko","Józef Piłsudski","Stefan Czarnecki"],"correct":"Tadeusz Kosciuszko"},
+                {"id":10,"question":"Dowódcą wojsk polskich w bitwie pod Racławicami był:","answer":["Kazimierz Pułaski","Tadeusz Kościuszko","Józef Piłsudski","Stefan Czarnecki"],"correct":"Tadeusz Kościuszko"},
                 {"id":11,"question":"Jak miał na drugie imię Józef Piłsudski?","answer":["Stanisław","Bogumił","Klemens","Kazimierz"],"correct":"Klemens"},
                 {"id":12,"question":"Ręczny granatnik przeciwpancerny RPG-76 \"Komar\" to broń:","answer":["czterokrotnego użytku","dwukrotnego użytku","wielokrotnego użytku","jednorazowego użytku"],"correct":"jednorazowego użytku"}
             ],
