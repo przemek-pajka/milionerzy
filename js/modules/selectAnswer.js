@@ -3,7 +3,7 @@ import showResults from './showResults.js';
 import validatePlayerAnswer from './validatePlayerAnswer.js';
 import prepareGameBoard from './prepareGameBoard.js';
 export default function selectAnswer(currentGameState) {
-    $('.game-wrapper__answers__item').click(function() {
+    $('.game-wrapper__answers__item').off('click').on('click',function() {
         const selectedResponseCell = $(this);
         const selectedAnswer = $(this).text();
         gameSounds.checkAnswer.play();
