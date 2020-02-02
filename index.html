@@ -2,9 +2,10 @@
 <html lang="en">
 
 <head>
-    <title></title>
+    <title>Milionerzy</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Free web project 'Milionerzy'">
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     <link rel="stylesheet" href="css/external/fontello/fontello.css" type="text/css" />
     <link rel="stylesheet" href="css/style.css">
@@ -12,9 +13,12 @@
 
 <body>
     <div id="page">
-        <h1 class="game-title">MILIONERZY</h1>
+        <header><h1 class="game-title">MILIONERZY</h1></header>
         <div class="start-screen">
-            <input type="text" class="option-menu-btn" id="nick-input" placeholder="Wpisz swój nick..."/>
+            <div class="nick-wrap">
+                <label for="nick-input" class="nick-label">Imię gracza:</label>
+                <input type="text" class="option-menu-btn nick-input" id="nick-input" placeholder="Wpisz swój nick..." name="nick-input"/>
+            </div>
             <button id="play-btn" class="play-btn option-menu-btn">ZAGRAJ</button>
         </div>
         <!-- .start-screen -->
